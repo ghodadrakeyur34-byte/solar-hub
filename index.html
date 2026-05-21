@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBITAL HUD // Solar System Explorer</title>
+    <meta name="description" content="Explore our solar system through a stunning, interactive, futuristic glassmorphic dashboard interface. Complete with telemetry indicators and scrolling animations.">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Space Background Particle Canvas -->
+    <canvas id="space-canvas"></canvas>
+
+    <!-- Glass Header & Floating Navigation -->
+    <header>
+        <div class="logo">ORBITAL // HUD</div>
+        <nav class="navbar">
+            <a href="#cosmos" class="nav-link active">SYSTEM</a>
+            <a href="#sun" class="nav-link">SUN</a>
+            <a href="#mercury" class="nav-link">MERCURY</a>
+            <a href="#venus" class="nav-link">VENUS</a>
+            <a href="#earth" class="nav-link">EARTH</a>
+            <a href="#mars" class="nav-link">MARS</a>
+            <a href="#jupiter" class="nav-link">JUPITER</a>
+            <a href="#saturn" class="nav-link">SATURN</a>
+            <a href="#uranus" class="nav-link">URANUS</a>
+            <a href="#neptune" class="nav-link">NEPTUNE</a>
+        </nav>
+    </header>
+
+    <!-- Floating Sci-fi Telemetry HUD Panel -->
+    <div class="hud-telemetry">
+        <div class="hud-title">COSMIC TELEMETRY</div>
+        <div class="hud-row">
+            <span class="hud-label">ENGINE STATUS:</span>
+            <span class="hud-value" id="hud-status" style="color: #22c55e;">STABLE ORBIT</span>
+        </div>
+        <div class="hud-row">
+            <span class="hud-label">SCROLL VELOCITY:</span>
+            <span class="hud-value" id="hud-velocity">0.00 AU/s</span>
+        </div>
+        <div class="hud-row">
+            <span class="hud-label">DISTANCE TRAVELED:</span>
+            <span class="hud-value" id="hud-distance">0.00 AU</span>
+        </div>
+        <div class="hud-row">
+            <span class="hud-label">SOLAR WINDS:</span>
+            <span class="hud-value" style="color: #ef4444;">ACTIVE (380 km/s)</span>
+        </div>
+    </div>
+
+    <!-- Main Journey Container -->
+    <div class="scroll-container">
+
+        <!-- INTRO HERO: THE COSMOS -->
+        <section id="cosmos" class="in-view">
+            <div class="cosmos-hud animate-item">SYSTEM INITIALIZED // DEEP SPACE EXPLORER</div>
+            <h1 class="cosmos-title animate-item delay-1">THE SOLAR SYSTEM</h1>
+            <p class="cosmos-tagline animate-item delay-2">
+                Embark on a digital odyssey across the infinite void. Traverse billions of kilometers of cosmic dust, intense radiation fields, and witness the majestic spheres that orbit our home star.
+            </p>
+            <button class="glass-btn animate-item delay-3" onclick="document.getElementById('sun').scrollIntoView({behavior: 'smooth'})">
+                LAUNCH INITIATION <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator animate-item delay-4">
+                <span>SCROLL DOWN TO INITIATE TRAVEL</span>
+                <div class="mouse-icon">
+                    <div class="mouse-wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE SUN -->
+        <section id="sun">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/sun.png" alt="The Sun" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 01</span>
+                    <h2 class="planet-name animate-item delay-1">THE SUN</h2>
+                    <span class="planet-type animate-item delay-1">G-TYPE MAIN-SEQUENCE STAR</span>
+                    <p class="planet-description animate-item delay-2">
+                        The heart of our Solar System, the Sun is a near-perfect sphere of glowing hot plasma. Its intense gravitational pull holds the entire planetary network in place. Driven by perpetual nuclear fusion in its core, it radiates the energy that sustains all terrestrial life.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right-to-line"></i> EQUATORIAL RADIUS</span>
+                            <span class="stat-value" data-target="696340" data-suffix=" km">0 km</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-weight-hanging"></i> SOLAR MASS</span>
+                            <span class="stat-value" data-target="333000" data-suffix=" Earths">0 Earths</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-temperature-high"></i> SURFACE TEMP</span>
+                            <span class="stat-value" data-target="5500" data-suffix=" °C">0 °C</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-atom"></i> CORE DENSITY</span>
+                            <span class="stat-value" data-target="150" data-suffix=" g/cm³">0 g/cm³</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MERCURY -->
+        <section id="mercury">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/mercury.png" alt="Mercury" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 02</span>
+                    <h2 class="planet-name animate-item delay-1">MERCURY</h2>
+                    <span class="planet-type animate-item delay-1">TERRESTRIAL PLANET</span>
+                    <p class="planet-description animate-item delay-2">
+                        The smallest and fastest planet in our solar system, Mercury zips around the Sun in just 88 days. Because it lacks a thick atmospheric shield, its heavily cratered rocky surface experiences extreme temperature swings, fluctuating from blistering daytime heat to dark, frozen nights.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="0.39" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-gauge-high"></i> ORBITAL SPEED</span>
+                            <span class="stat-value" data-target="47.87" data-suffix=" km/s">0.00 km/s</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-earth-americas"></i> GRAVITY COMPARED</span>
+                            <span class="stat-value" data-target="0.38" data-suffix="x Earth">0.00x Earth</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> NATURAL MOONS</span>
+                            <span class="stat-value" data-target="0" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VENUS -->
+        <section id="venus">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/venus.png" alt="Venus" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 03</span>
+                    <h2 class="planet-name animate-item delay-1">VENUS</h2>
+                    <span class="planet-type animate-item delay-1">TERRESTRIAL PLANET</span>
+                    <p class="planet-description animate-item delay-2">
+                        Commonly referred to as Earth's twin due to its similar size, Venus is a hellish world wrapped in a dense, suffocating blanket of greenhouse gases. Carbon dioxide and clouds of toxic sulfuric acid trap solar heat, creating surface temperatures hot enough to melt solid lead.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="0.72" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-temperature-high"></i> SURFACE TEMP</span>
+                            <span class="stat-value" data-target="462" data-suffix=" °C">0 °C</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-gauge-high"></i> ORBITAL SPEED</span>
+                            <span class="stat-value" data-target="35.02" data-suffix=" km/s">0.00 km/s</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-clock"></i> DAY LENGTH</span>
+                            <span class="stat-value" data-target="243" data-suffix=" Earth Days">0 Earth Days</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EARTH -->
+        <section id="earth">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/earth.png" alt="Earth" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 04</span>
+                    <h2 class="planet-name animate-item delay-1">EARTH</h2>
+                    <span class="planet-type animate-item delay-1">TERRESTRIAL PLANET</span>
+                    <p class="planet-description animate-item delay-2">
+                        Our home world, Earth, is an oasis of liquid oceans and active ecosystems. It is the only known harbor of life in the universe. Protected by a strong magnetic field and nitrogen-oxygen atmosphere, it supports millions of species and a sprawling digital civilization.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="1.00" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-users"></i> POPULATION</span>
+                            <span class="stat-value" data-target="8.1" data-suffix=" Billion">0 Billion</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-water"></i> SURFACE WATER</span>
+                            <span class="stat-value" data-target="70.8" data-suffix=" %">0 %</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> NATURAL MOONS</span>
+                            <span class="stat-value" data-target="1" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARS -->
+        <section id="mars">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/mars.png" alt="Mars" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 05</span>
+                    <h2 class="planet-name animate-item delay-1">MARS</h2>
+                    <span class="planet-type animate-item delay-1">TERRESTRIAL PLANET</span>
+                    <p class="planet-description animate-item delay-2">
+                        The dusty Red Planet is a cold desert world rich in iron oxide. Once hosting flowing liquid water, it now features grand geological spectacles like Olympus Mons—the largest volcano in the Solar System—and is currently the primary target for future interplanetary settlement.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="1.52" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-temperature-low"></i> AVG TEMPERATURE</span>
+                            <span class="stat-value" data-target="-62" data-suffix=" °C">0 °C</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-earth-americas"></i> GRAVITY COMPARED</span>
+                            <span class="stat-value" data-target="0.37" data-suffix="x Earth">0.00x Earth</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> NATURAL MOONS</span>
+                            <span class="stat-value" data-target="2" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JUPITER -->
+        <section id="jupiter">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/jupiter.png" alt="Jupiter" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 06</span>
+                    <h2 class="planet-name animate-item delay-1">JUPITER</h2>
+                    <span class="planet-type animate-item delay-1">GAS GIANT</span>
+                    <p class="planet-description animate-item delay-2">
+                        Jupiter is the King of Planets, a colossus twice as massive as all other planets combined. Mostly comprised of hydrogen and helium, its atmospheric storms are legendary—most notably the Great Red Spot, a colossal vortex larger than Earth that has raged for centuries.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="5.20" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right-to-line"></i> EQUATORIAL RADIUS</span>
+                            <span class="stat-value" data-target="69911" data-suffix=" km">0 km</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-clock"></i> ROTATION PERIOD</span>
+                            <span class="stat-value" data-target="9.9" data-suffix=" Hours">0 Hours</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> RECORDED MOONS</span>
+                            <span class="stat-value" data-target="95" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SATURN -->
+        <section id="saturn">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/saturn.png" alt="Saturn" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 07</span>
+                    <h2 class="planet-name animate-item delay-1">SATURN</h2>
+                    <span class="planet-type animate-item delay-1">GAS GIANT</span>
+                    <p class="planet-description animate-item delay-2">
+                        Saturn stands out as the ultimate cosmic spectacle, famous for its grand ring system. Comprising billions of floating fragments of ice, rock, and dust, these stunning rings stretch thousands of kilometers wide but are incredibly thin, measuring barely ten meters in depth.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="9.58" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right-to-line"></i> EQUATORIAL RADIUS</span>
+                            <span class="stat-value" data-target="58232" data-suffix=" km">0 km</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-gauge-high"></i> ORBITAL VELOCITY</span>
+                            <span class="stat-value" data-target="9.68" data-suffix=" km/s">0.00 km/s</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> RECORDED MOONS</span>
+                            <span class="stat-value" data-target="146" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- URANUS -->
+        <section id="uranus">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/uranus.png" alt="Uranus" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 08</span>
+                    <h2 class="planet-name animate-item delay-1">URANUS</h2>
+                    <span class="planet-type animate-item delay-1">ICE GIANT</span>
+                    <p class="planet-description animate-item delay-2">
+                        An icy gas world of pale aquamarine, Uranus spins uniquely on its side, tilted by a massive 98 degrees. This horizontal rotation, likely caused by a ancient planet-sized impact, subjects the planet to extreme 21-year seasonal storms and vertical glowing rings.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="19.18" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-temperature-low"></i> AVG TEMPERATURE</span>
+                            <span class="stat-value" data-target="-195" data-suffix=" °C">0 °C</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-gauge-high"></i> ORBITAL VELOCITY</span>
+                            <span class="stat-value" data-target="6.80" data-suffix=" km/s">0.00 km/s</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> KNOWN MOONS</span>
+                            <span class="stat-value" data-target="27" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEPTUNE -->
+        <section id="neptune">
+            <div class="section-content">
+                <div class="visual-column animate-item">
+                    <div class="planet-wrapper">
+                        <img src="assets/neptune.png" alt="Neptune" class="planet-image">
+                        <div class="planet-ring ring-outer"></div>
+                        <div class="hud-scanline"></div>
+                    </div>
+                </div>
+                <div class="info-column">
+                    <span class="planet-index animate-item">DEEP SPACE // OBJECT 09</span>
+                    <h2 class="planet-name animate-item delay-1">NEPTUNE</h2>
+                    <span class="planet-type animate-item delay-1">ICE GIANT</span>
+                    <p class="planet-description animate-item delay-2">
+                        Locked in dark, frozen orbits 4.5 billion kilometers from the Sun, Neptune is a giant of deep cobalt blue. Its high atmosphere, containing methane traces, is whipped by supersonic, record-breaking dark-matter winds reaching up to 2,100 kilometers per hour.
+                    </p>
+                    
+                    <!-- Stats Card Grid -->
+                    <div class="stats-grid animate-item delay-3">
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-arrows-left-right"></i> DISTANCE FROM SUN</span>
+                            <span class="stat-value" data-target="30.07" data-suffix=" AU">0.00 AU</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-wind"></i> PEAK WIND SPEED</span>
+                            <span class="stat-value" data-target="2100" data-suffix=" km/h">0 km/h</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-earth-americas"></i> GRAVITY COMPARED</span>
+                            <span class="stat-value" data-target="1.14" data-suffix="x Earth">0.00x Earth</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label"><i class="fa-solid fa-moon"></i> KNOWN MOONS</span>
+                            <span class="stat-value" data-target="14" data-suffix="">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbit controls panel -->
+                    <div class="orbit-control-panel animate-item delay-4">
+                        <button class="glass-pill-btn btn-stop"><i class="fa-solid fa-pause"></i> PAUSE SPIN</button>
+                        <button class="glass-pill-btn btn-normal active"><i class="fa-solid fa-play"></i> NORMAL</button>
+                        <button class="glass-pill-btn btn-fast"><i class="fa-solid fa-gauge-high"></i> ACCELERATE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS Link -->
+    <script src="app.js"></script>
+</body>
+</html>
